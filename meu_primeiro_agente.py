@@ -4,7 +4,7 @@ meu_jarvis = Cerebro()
 print("Jarvis online!!!(digite 'sair' para encerrar)\n")
 
 while True:
-    mensagem = input("Voce ")
+    mensagem = input("Voce: ")
     if mensagem.lower() == 'sair':
         print("desligando o sistema. ate logo, senhor.")
         break
