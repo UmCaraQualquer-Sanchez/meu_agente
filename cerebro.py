@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 from google import genai 
 from google.genai import types
-from habilidades import obter_hora_atual, abrir_spotify
+from habilidades import obter_hora_atual, abrir_spotify, pesquisar_no_google
 
 
 class Cerebro:
@@ -20,7 +20,7 @@ class Cerebro:
         )
         self.chat = self.client.chats.create(model='gemini-3.8-flash',
         config = types.GenerateContentConfig(system_instruction=instrucao,
-        tools=[obter_hora_atual,abrir_spotify]),
+        tools=[obter_hora_atual,abrir_spotify,pesquisar_no_google]),
         )
 
     def processar_mensagem(self, mensagem_do_usuario):
