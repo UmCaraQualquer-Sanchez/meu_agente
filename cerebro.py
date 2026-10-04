@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from google import genai 
+from google.genai import types
 
 class Cerebro:
     def __init__(self):
@@ -10,7 +11,14 @@ class Cerebro:
         self.client = genai.Client(api_key=minha_chave)
 
         print("iciando o cérebro do Jarvis...")
-        self.chat = self.client.chats.create(model='gemini-3.8-flash')
+        instrucao = (
+             "Você é o JARVIS, assistente pessoal do Sanchez, um estudante "
+            "de Ciência da Computação. Seja direto, técnico e prestativo. "
+            "Nunca se apresente como um modelo do Google."
+        )
+        self.chat = self.client.chats.create(model='gemini-3.8-flash',
+        config = types.GenerateContentConfig(system_instruction=instrucao)
+        )
         
     def processar_mensagem(self, mensagem_do_usuario):
             try:
